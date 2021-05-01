@@ -1,21 +1,22 @@
-<h4>Leave a Comment:</h4>
-<form role="form">
-    <div class="form-group">
-        <textarea class="form-control" rows="3" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
+
+<h4><small>RECENT POSTS</small></h4>
+<hr>
+<h2>{{ post.title }}</h2>
+<h5><span class="glyphicon glyphicon-time"></span> Posted by {{ post.user.username }}.</h5>
+<p>{{ post.text }}</p>
 <br><br>
 
-<p><span class="badge">2</span> Comments:</p><br>
 
+<h4>Leave a Comment:</h4>
+<p><span class="badge">{{ commentCount }}</span> Comments:</p><br>
+
+{{#each comments}}
 <div class="row">
     <div class="col-sm-10">
-        <h4>Dylan <small>Sep 29, 2015, 9:12 PM</small></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum faucibus elit, sit amet mollis nisl
-            ullamcorper ac. Quisque pulvinar fermentum turpis, ac posuere nisi egestas sed. Mauris blandit lacinia orci
-            eu maximus. Suspendisse mi purus, lobortis non arcu porttitor, pulvinar venenatis mi.</p>
+        <h4>{{ user.username }}<small>Sep 29, 2015, 9:12 PM</small></h4>
+        <p>{{ text }}</p>
         <br>
     </div>
 
 </div>
+{{/each}}
