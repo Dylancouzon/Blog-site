@@ -1,11 +1,8 @@
 <h4><small>RECENT POSTS</small></h4>
+{{#each posts}}
 <hr>
-<h2>I Love Food</h2>
-<h5><span class="glyphicon glyphicon-time"></span> Post by Dylan, Sep 27, 2015.</h5>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum faucibus elit, sit amet mollis nisl
-  ullamcorper ac. Quisque pulvinar fermentum turpis, ac posuere nisi egestas sed. Mauris blandit lacinia orci eu
-  maximus. Suspendisse mi purus, lobortis non arcu porttitor, pulvinar venenatis mi. Nullam scelerisque est sit amet
-  massa dapibus aliquam. Donec in egestas ligula. Aenean et iaculis augue. Integer pretium metus ut eros hendrerit, sit
-  amet posuere elit tincidunt. In laoreet ipsum eu sem gravida porttitor. Sed egestas vel nulla ac ultrices. Aliquam
-  erat volutpat.</p>
+<h2>{{ title }}</h2>
+<h5><span class="glyphicon glyphicon-time"></span> Posted by {{ user.username }}.</h5>
+<p>{{ text }}</p>
 <br><br>
+{{/each}}
