@@ -18,7 +18,7 @@
         <h4>Developpers blog</h4>
         <ul class="nav nav-pills nav-stacked">
           <li class="active"><a href="/">Home</a></li>
-          <li><a href="/post">Dashboard</a></li>
+          <li><a href="/api/user">Dashboard</a></li>
         </ul><br>
         <div class="input-group">
           {{#if logged_in}}
@@ -50,5 +50,7 @@
   </footer>
 </body>
 <script src="js/login.js"></script>
-
+  {{#if logged_in}}
+  <script src="/js/post.js"></script>
+  {{/if}}
 </html>

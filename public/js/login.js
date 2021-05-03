@@ -10,7 +10,7 @@ login = async () => {
         });
         const res = await response.json();
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/api/user');
 
         } else {
             $("#loginTxt").html(res.message);

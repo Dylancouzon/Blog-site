@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post } = require('../../models');
 const auth = require('../../utils/auth').authTest;
 
 router.post('/login', async (req, res) => {
@@ -22,8 +22,8 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.username = userData.username;
       req.session.logged_in = true;
-      
-      res.status(200).json({ user: userData, message: 'You are now logged in!' });
+
+      res.status(200).json({ user: userData });
     });
 
   } catch (err) {
@@ -56,5 +56,35 @@ router.get('/logout', (req, res) => {
     res.status(404).redirect('/').end();
   }
 });
-module.exports = router;
 
+router.get('/', auth, async (req, res) => {
+
+  try {
+    const postData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id
+      }
+    },
+      {
+        include: [
+          {
+            model: User,
+            attributes: ['username'],
+          },
+        ],
+      });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    console.log(posts);
+    res.render('post', {
+      posts,
+      logged_in: req.session.logged_in,
+      username: req.session.username,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
