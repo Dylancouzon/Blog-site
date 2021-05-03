@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-
+    console.log(posts);
     console.log(posts);
     res.render('homepage', {
       posts,
@@ -48,11 +48,7 @@ router.get('/comment/:id', auth, async (req, res) => {
 
     const post = postData.get({ plain: true });
 
-    const commentData = await Comment.findAll({
-      where: {
-        post_id: post.id
-      }
-    },
+    const commentData = await Comment.findAll(
       {
         include: [
           {
@@ -60,10 +56,17 @@ router.get('/comment/:id', auth, async (req, res) => {
             attributes: ['username'],
           },
         ],
-      });
+      },
+      {
+      where: {
+        post_id: post.id
+      }
+    }
+    );
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
     const commentCount = comments.length;
+    console.log(comments);
     res.render('comment', {
       post,
       comments,
