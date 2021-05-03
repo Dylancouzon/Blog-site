@@ -1,7 +1,7 @@
 <h4><small>RECENT POSTS</small></h4>
 {{#each posts}}
 <hr>
-<h2>{{ title }}</h2>
+<h2><a href="/comment/{{ id }}">{{ title }}</a></h2>
 <h5><span class="glyphicon glyphicon-time"></span> Posted by {{ user.username }}.</h5>
 <p>{{ text }}</p>
 <br><br>

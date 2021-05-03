@@ -10,10 +10,12 @@
 <p><span class="badge">{{ commentCount }}</span> Comments:</p><br>
 <form role="form">
     <div class="form-group">
-        <textarea class="form-control" rows="3" required></textarea>
+        <textarea id="commentTxt" class="form-control" rows="3" required></textarea>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <input type="hidden" id="postId" name="postId" value={{ post.id }}>
+    <button id="newComment" type="submit" class="btn btn-success">Submit</button>
 </form>
+<h2 id="commentErr"></h2>
 
 {{#each comments}}
 <div class="row">
