@@ -34,7 +34,7 @@ signup = async () => {
         });
 
         if (response.ok) {
-            document.location.replace('/user');
+            document.location.replace('/api/user');
         } else {
             $("#loginTxt").html(res.message);
 
