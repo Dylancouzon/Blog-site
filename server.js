@@ -15,7 +15,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Initialize Handlebars
-app.set('views', path.join(__dirname, 'app/views'));
 const hbs = exphbs.create({ helpers, defaultLayout: 'main' });
 
 // Create the session
@@ -34,8 +33,7 @@ app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
 // Heroku ??
-
-console.log("HEREHREHERHER " + path.join(__dirname, 'app/views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
