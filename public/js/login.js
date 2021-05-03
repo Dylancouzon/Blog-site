@@ -53,3 +53,6 @@ $("#signup").click(function (event) {
     event.preventDefault();
     signup()
 });
+
+setTimeout(function(){ $("#loginTxt").html("Auto Log-out in 1min."); }, 540000);
+setTimeout(function(){ document.location.replace('/logout'); }, 600000);
