@@ -92,7 +92,7 @@ router.post('/newpost', async (req, res) => {
     let newPost = req.body;
     newPost.user_id = req.session.user_id;
     console.log(newPost);
-    const postData = await Post.create(req.body);
+    const postData = await Post.create(newPost);
     res.status(200).json(postData);
 
   } catch (err) {
@@ -104,8 +104,7 @@ router.post('/newcomment', async (req, res) => {
   try {
     let newComment = req.body;
     newComment.user_id = req.session.user_id;
-    console.log(newComment);
-    const commentData = await Comment.create(req.body);
+    const commentData = await Comment.create(newComment);
     res.status(200).json(commentData);
 
   } catch (err) {
