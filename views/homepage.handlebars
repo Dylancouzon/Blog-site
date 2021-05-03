@@ -2,7 +2,7 @@
 {{#each posts}}
 <hr>
 <h2><a href="/comment/{{ id }}">{{ title }}</a></h2>
-<h5><span class="glyphicon glyphicon-time"></span> Posted by {{ user.username }} on {{ time }}.</h5>
+<h5><span class="glyphicon glyphicon-time"></span> Posted by {{ user.username }} on {{format_date time }}.</h5>
 <p>{{ text }}</p>
 <br><br>
 {{/each}}
