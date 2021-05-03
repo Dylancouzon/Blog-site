@@ -1,3 +1,4 @@
+//Login API Call
 login = async () => {
 
     const username = $("#username").val();
@@ -21,6 +22,7 @@ login = async () => {
     }
 }
 
+//Sign Up API call
 signup = async () => {
 
     const username = $("#username").val();
@@ -54,5 +56,6 @@ $("#signup").click(function (event) {
     signup()
 });
 
+// Auto Log out after 10min
 setTimeout(function(){ $("#loginTxt").html("Auto Log-out in 1min."); }, 540000);
 setTimeout(function(){ document.location.replace('/logout'); }, 600000);

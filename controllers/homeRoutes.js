@@ -2,8 +2,8 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const auth = require('../utils/auth').authTest;
 
+//Index route
 router.get('/', async (req, res) => {
-
   let authResult = req.url.substring(2);
   let redirect = false;
   if (authResult == "err=1") {
@@ -34,6 +34,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// View a Post and its comments route
 router.get('/comment/:id', auth, async (req, res) => {
   try {
 
@@ -76,6 +77,7 @@ router.get('/comment/:id', auth, async (req, res) => {
   }
 });
 
+//Delete a post route
 router.get('/delete/:id', auth, async (req, res) => {
   try {
     const deleteComment = await Comment.destroy({
@@ -96,6 +98,7 @@ router.get('/delete/:id', auth, async (req, res) => {
   }
 });
 
+//Edit a post route
 router.put('/edit', auth, async (req, res) => {
   try {
     const postData = await Post.update(req.body, {

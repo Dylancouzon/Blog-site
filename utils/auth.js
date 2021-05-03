@@ -1,3 +1,4 @@
+// Test if the user is authentificated
 module.exports = {
     authTest: (req, res, cb) => {
 

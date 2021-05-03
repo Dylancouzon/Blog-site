@@ -1,3 +1,4 @@
+//Create a post API call
 newPost = async () => {
     const id = $("#editId").val();
     const text = $("#postTxt").val();
@@ -35,6 +36,7 @@ newPost = async () => {
     }
 }
 
+//Create a comment API call
 newComment = async () => {
 
     const text = $("#commentTxt").val();
@@ -65,6 +67,7 @@ $("#newComment").click(function (event) {
     newComment()
 });
 
+//Edit a post function
 function edit(post) {
     let edit = post.split('~');
     $("#title").html("Edit an Article");

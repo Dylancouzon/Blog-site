@@ -5,6 +5,8 @@
 
 <h5><span class="glyphicon glyphicon-time"></span> Posted on {{format_date post.time }}.</h5>
 <p>{{ post.text }}</p>
+{{!-- the ~ caracter is used to separate the differents elements to be able to split them later.
+Needs to be improved but only way around Handlebars limitations I found for now. --}}
 <a href='javascript:;' onclick='edit("{{ post.id }} ~ {{ post.title }} ~ {{ post.text }}");'><button class="btn btn-secondary">Edit</button></a>
 <a href="/delete/{{ post.id }}"><button class="btn btn-secondary">Delete</button></a>
 <br><br>
