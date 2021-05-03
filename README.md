@@ -23,8 +23,8 @@ You would need to download the project on your local machine, install node.js th
 node install
 ```
 
-Update your Mysql infos in lib/mysql.js, then execute the db.sql in Mysql.
-
+Update your Mysql infos in .ENV.EXAMPLE, rename the file .ENV, then execute db.sql in Mysql.
+(The secret must be a random string that will be used to encode the user Sessions).
 ## How to use it
 run the commande 
 
