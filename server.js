@@ -33,7 +33,7 @@ app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
-console.log(path.join(__dirname, 'views'));
+console.log("HEREHREHERHER " + path.join(__dirname, 'app/views'));
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
