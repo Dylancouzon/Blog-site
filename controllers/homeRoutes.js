@@ -50,18 +50,15 @@ router.get('/comment/:id', auth, async (req, res) => {
 
     const commentData = await Comment.findAll(
       {
-        include: [
-          {
-            model: User,
-            attributes: ['username'],
-          },
-        ],
-      },
-      {
-      where: {
-        post_id: post.id
+        where: {
+          post_id: post.id
+        },
+        include: [{
+          model: User,
+          attributes: ['username'],
+
+        }],
       }
-    }
     );
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
@@ -79,5 +76,24 @@ router.get('/comment/:id', auth, async (req, res) => {
   }
 });
 
+router.get('/delete/:id', auth, async (req, res) => {
+  try {
+
+    const deletePost = await Post.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!deletePost) {
+      res.status(404).json({ message: 'No Post found with this id!' });
+      return;
+    }
+    res.status(200).redirect('/').json(postData);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

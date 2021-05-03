@@ -1,7 +1,7 @@
 <h4><small>MY POSTS</small></h4>
 {{#each posts as |post| }}
 <hr>
-<h2><a href="/comment/{{ post.id }}">{{ post.title }}</a></h2>
+<h2><a href="/comment/{{ post.id }}">{{ post.title }}</a></h2><a href="/edit/{{ post.id }}">Edit</a><br><a href="/delete/{{ post.id }}">Delete</a>
 <h5><span class="glyphicon glyphicon-time"></span> Posted on {{format_date post.time }}.</h5>
 <p>{{ post.text }}</p>
 <br><br>

@@ -47,3 +47,4 @@ $("#newComment").click(function (event) {
     event.preventDefault();
     newComment()
 });
+
