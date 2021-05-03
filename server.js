@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Initialize Handlebars
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app/views'));
 const hbs = exphbs.create({ helpers, defaultLayout: 'main' });
 
 // Create the session
