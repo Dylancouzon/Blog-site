@@ -87,4 +87,17 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+router.post('/newpost', async (req, res) => {
+  try {
+    let newPost = req.body;
+    newPost.user_id = req.session.user_id;
+    console.log(newPost);
+    const postData = await Post.create(req.body);
+    res.status(200).json(postData);
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;

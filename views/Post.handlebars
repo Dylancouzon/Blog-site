@@ -9,9 +9,11 @@
 
 <hr>
 <h4>Post an Article</h4>
-<form role="form">
+<form role="form" >
     <div class="form-group">
-        <textarea class="form-control" rows="3" required></textarea>
+         <input type="text" id="postTitle" id="Title" class="form-control" placeholder="Title" style="margin-bottom:2px;" required>
+        <textarea id="postTxt" class="form-control" rows="3" required></textarea>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button id="newPost" type="submit" class="btn btn-success">Submit</button>
 </form>
+<h2 id="postErr"></h2>
