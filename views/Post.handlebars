@@ -1,17 +1,20 @@
 <h4><small>MY POSTS</small></h4>
 {{#each posts as |post| }}
 <hr>
-<h2><a href="/comment/{{ post.id }}">{{ post.title }}</a></h2><a href="/edit/{{ post.id }}">Edit</a><br><a href="/delete/{{ post.id }}">Delete</a>
+<h2><a href="/comment/{{ post.id }}">{{ post.title }}</a></h2>
+
 <h5><span class="glyphicon glyphicon-time"></span> Posted on {{format_date post.time }}.</h5>
 <p>{{ post.text }}</p>
+<a href='javascript:;' onclick='edit("{{ post.id }} ~ {{ post.title }} ~ {{ post.text }}");'><button class="btn btn-secondary">Edit</button></a>
+<a href="/delete/{{ post.id }}"><button class="btn btn-secondary">Delete</button></a>
 <br><br>
 {{/each}}
 
 <hr>
-<h4>Post an Article</h4>
-<form role="form" >
+<h4 id="title">Post an Article</h4>
+<form role="form" id="postForm">
     <div class="form-group">
-         <input type="text" id="postTitle" id="Title" class="form-control" placeholder="Title" style="margin-bottom:2px;" required>
+         <input type="text" id="postTitle" class="form-control" placeholder="Title" style="margin-bottom:2px;" required>
         <textarea id="postTxt" class="form-control" rows="3" required></textarea>
     </div>
     <button id="newPost" type="submit" class="btn btn-success">Submit</button>

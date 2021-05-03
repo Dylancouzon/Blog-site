@@ -91,7 +91,6 @@ router.post('/newpost', async (req, res) => {
   try {
     let newPost = req.body;
     newPost.user_id = req.session.user_id;
-    console.log(newPost);
     const postData = await Post.create(newPost);
     res.status(200).json(postData);
 

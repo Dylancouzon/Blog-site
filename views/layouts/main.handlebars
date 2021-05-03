@@ -49,8 +49,10 @@
     <p>UC Berkeley Extension Coding Bootcamp</p>
   </footer>
 </body>
-<script src="js/login.js"></script>
+
   {{#if logged_in}}
   <script src="/js/post.js"></script>
+  {{else}}
+  <script src="js/login.js"></script>
   {{/if}}
 </html>
