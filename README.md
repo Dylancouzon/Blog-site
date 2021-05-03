@@ -1,23 +1,19 @@
-# E-Commerce BackEnd
+# Blog site
 Homework for UC Berkeley Extension Coding Bootcamp
 
-![Site](./demo.gif)
+![Demo](./public/demo.gif)
 
 ## Technologies Used
 - Javascript - Backend coding
 - Node - JavaScript runtime environment
 - Express - Node Framework
 - Mysql - Database managment system
+- Handlebars - HTML Framework
 
 ## Summary 
 
-This command-line app allows you to manage an E-commerce website Back end.
-
-It allows you to :
-* Create / Edit / Delete Products
-* Manage your stock
-* Create / Edit / Delete Categories
-* Create / Edit / Delete Tags
+This application allows you to create / Edit / Delete / Comment posts of your choice.
+It requires to create an account for most of the actions.
 
 
 ## How to install
@@ -33,11 +29,19 @@ Update your Mysql infos in lib/mysql.js, then execute the db.sql in Mysql.
 run the commande 
 
 ```
-npm start
+npm start then browse http://localhost:3001
 ```
 
-## Video demo
-[Link](https://drive.google.com/file/d/1mzqP7btu2fEY_DS8g8NCfKCz_Xcrt1R6/view?usp=sharing)
+## Snippet 
+```js
+setTimeout(function(){ $("#loginTxt").html("Auto Log-out in 1min."); }, 540000);
+setTimeout(function(){ document.location.replace('/logout'); }, 600000);
+```
+This a very simple function that warns the user after 9min without any action. 
+After 10min, the user will be looged out automatically.
+
+## Live page
+[Heroku link](https://blog-side-dc.herokuapp.com/)
 
 ## Author Links
 [LinkedIn](https://www.linkedin.com/in/dcouzon/)

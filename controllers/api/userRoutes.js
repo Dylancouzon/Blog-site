@@ -1,3 +1,4 @@
+const path = require('path');
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 const auth = require('../../utils/auth').authTest;
@@ -79,8 +80,8 @@ router.get('/', auth, async (req, res) => {
       });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-
-    res.render('../post', {
+      // Works on the parent folder but not here ???
+    res.render('post', {
       posts,
       logged_in: req.session.logged_in,
       username: req.session.username,
