@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Developpers blog</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -17,16 +17,27 @@
       <div class="col-sm-3 sidenav">
         <h4>Developpers blog</h4>
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#section1">Home</a></li>
-          <li><a href="#section2">Publish an Article</a></li>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/post">Dashboard</a></li>
         </ul><br>
         <div class="input-group">
-          <form role="form" id="loginForm">
+          {{#if logged_in}}
+          <p>Logged in as: {{username}}</p>
+          <button type="submit" id="Log out" onclick="window.location.href='/api/user/logout'"
+            class="btn btn-success">Log out</button>
+          {{else}}
+          <form role="form" id="loginForm" style="margin-bottom: 20px;">
             <input type="text" id="username" class="form-control" placeholder="Username" style="margin-bottom:2px;">
             <input type="text" id="password" class="form-control" placeholder="Password" style="margin-bottom:2px;">
-            <button type="submit" class="btn btn-success">Login</button>
-            <button type="submit" class="btn btn-success">Sign Up</button>
+            <button type="submit" id="login" class="btn btn-success">Login</button>
+            <button type="submit" id="signup" class="btn btn-success">Sign Up</button>
           </form>
+          {{/if}}
+          {{#if redirect}}
+          <h4 id="loginTxt">Please Log in or Sign Up first!</h4>
+          {{else}}
+          <h4 id="loginTxt"></h4>
+          {{/if}}
         </div>
       </div>
       <div class="col-sm-9">
@@ -38,5 +49,6 @@
     <p>UC Berkeley Extension Coding Bootcamp</p>
   </footer>
 </body>
+<script src="js/login.js"></script>
 
 </html>

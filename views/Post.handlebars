@@ -1,5 +1,14 @@
-<h4><small>Post an Article</small></h4>
-<h4>Article</h4>
+<h4><small>MY POSTS</small></h4>
+{{#each posts}}
+<hr>
+<h2>{{ title }}</h2>
+<h5><span class="glyphicon glyphicon-time"></span> Posted by {{ user.username }}.</h5>
+<p>{{ text }}</p>
+<br><br>
+{{/each}}
+
+<hr>
+<h4>Post an Article</h4>
 <form role="form">
     <div class="form-group">
         <textarea class="form-control" rows="3" required></textarea>

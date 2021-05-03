@@ -1,12 +1,11 @@
 module.exports = {
-    ​
-      auth: (req, res, cb) => {
-    ​
+    authTest: (req, res, cb) => {
+
         if (!req.session.logged_in) {
-          res.redirect('/login');
+            res.redirect('/?err=1');
+            return
         } else {
-          cb();
+            cb();
         }
-      }
-    ​
-    };
+    }
+};

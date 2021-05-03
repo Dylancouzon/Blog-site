@@ -1,3 +1,11 @@
+
+    #loginTxt{
+      color: red;
+      font-weight: bold;
+    }
+
+        /* Bootstrap */
+    
     /* Set height of the grid so .sidenav can be 100% */
     .row.content {height: 1500px}
     

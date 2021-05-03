@@ -1,8 +1,15 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
-// const auth = require('../utils/auth').auth();
+const auth = require('../utils/auth').authTest;
 
 router.get('/', async (req, res) => {
+  
+  let authResult = req.url.substring(2);
+  let redirect = false;
+  if(authResult == "err=1"){
+    redirect = true;
+  }
+  
   try {
     const postData = await Post.findAll({
       include: [
@@ -16,16 +23,18 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
 
 
-    res.render('homepage', { 
-      posts, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      posts,
+      redirect,
+      logged_in: req.session.logged_in,
+      username: req.session.username,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/comment/:id', async (req, res) => {
+router.get('/comment/:id', auth, async (req, res) => {
   try {
 
     const postData = await Post.findByPk(req.params.id, {
@@ -36,7 +45,7 @@ router.get('/comment/:id', async (req, res) => {
         },
       ],
     });
-    
+
     const post = postData.get({ plain: true });
 
     const commentData = await Post.findAll({
@@ -55,6 +64,7 @@ router.get('/comment/:id', async (req, res) => {
       comments,
       commentCount,
       logged_in: req.session.logged_in,
+      username: req.session.username,
     });
   } catch (err) {
     res.status(500).json(err);
