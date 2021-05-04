@@ -91,7 +91,7 @@ router.get('/delete/:id', auth, async (req, res) => {
       },
     });
 
-    res.status(200).redirect('/api/user').json(deleteComment + deletePost);
+    res.status(200).redirect('/dashboard').json(deleteComment + deletePost);
 
   } catch (err) {
     res.status(500).json(err);
@@ -110,6 +110,36 @@ router.put('/edit', auth, async (req, res) => {
 
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.get('/dashboard', auth, async (req, res) => {
+
+  try {
+    const postData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id
+      }
+    },
+      {
+        include: [
+          {
+            model: User,
+            attributes: ['username'],
+          },
+        ],
+      });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+    // Works on the parent folder but not here ???
+    console.log(process.env.PATH);
+    res.render('post', {
+      posts,
+      logged_in: req.session.logged_in,
+      username: req.session.username,
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

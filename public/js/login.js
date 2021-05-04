@@ -11,7 +11,7 @@ login = async () => {
         });
         const res = await response.json();
         if (response.ok) {
-            document.location.replace('/api/user');
+            document.location.replace('/dashboard');
 
         } else {
             $("#loginTxt").html(res.message);
@@ -36,7 +36,7 @@ signup = async () => {
         });
 
         if (response.ok) {
-            document.location.replace('/api/user');
+            document.location.replace('/dashboard');
         } else {
             $("#loginTxt").html(res.message);
 

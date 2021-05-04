@@ -12,7 +12,7 @@ newPost = async () => {
             });
 
             if (response.ok) {
-                document.location.replace('/api/user');
+                document.location.replace('/dashboard');
 
             }
         } else {
@@ -27,7 +27,7 @@ newPost = async () => {
             });
 
             if (response.ok) {
-                document.location.replace('/api/user');
+                document.location.replace('/dashboard');
 
             }
         } else {

@@ -62,35 +62,7 @@ router.get('/logout', (req, res) => {
 });
 
 // Dashboard route
-router.get('/', auth, async (req, res) => {
 
-  try {
-    const postData = await Post.findAll({
-      where: {
-        user_id: req.session.user_id
-      }
-    },
-      {
-        include: [
-          {
-            model: User,
-            attributes: ['username'],
-          },
-        ],
-      });
-
-    const posts = postData.map((post) => post.get({ plain: true }));
-    // Works on the parent folder but not here ???
-    console.log(process.env.PATH);
-    res.render('../post', {
-      posts,
-      logged_in: req.session.logged_in,
-      username: req.session.username,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 // Create a post route
 router.post('/newpost', async (req, res) => {
