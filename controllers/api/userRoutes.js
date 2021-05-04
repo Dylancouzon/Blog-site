@@ -80,8 +80,9 @@ router.get('/', auth, async (req, res) => {
       });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-      // Works on the parent folder but not here ???
-    res.render('/post', {
+    // Works on the parent folder but not here ???
+    console.log(process.env.PATH);
+    res.render('../post', {
       posts,
       logged_in: req.session.logged_in,
       username: req.session.username,
